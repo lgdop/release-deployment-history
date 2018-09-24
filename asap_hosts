@@ -1,0 +1,286 @@
+[DEV1asap]
+asapDEV1server ansible_ssh_host=84.116.2.151 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[DEd1asap]
+asapDEd1server ansible_ssh_host=84.116.2.152 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[DEj1asap]
+viejasade00 ansible_ssh_host=172.28.38.44 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[DEu1asap]
+vieuasade00 ansible_ssh_host=172.28.38.43 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[DEp3asap]
+viepasade00 ansible_ssh_host=172.28.35.31 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[DEj4asap]
+viejasade10 ansible_ssh_host=172.16.11.12 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[DEu4asap]
+vieuasade21 ansible_ssh_host=172.16.11.13 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[DEo4asap]
+viepasade21 ansible_ssh_host=172.16.9.172 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[NLj4asap]
+viejasanl20 ansible_ssh_host=172.16.2.236 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[NLu4asap]
+vieuasanl20 ansible_ssh_host=172.16.2.228 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[NLo4asap]
+vieoasanl20 ansible_ssh_host=172.16.4.204 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[NLp4asap]
+viepasanl20 ansible_ssh_host=172.16.4.196 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[PLj3asap]
+viejasapl10 ansible_ssh_host=172.16.10.135 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[PLu3asap]
+vieuasapl10 ansible_ssh_host=172.16.10.136 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[PLo3asap]
+vieoasapl10 ansible_ssh_host=172.28.39.215 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[PLp3asap]
+viepasapl10 ansible_ssh_host=172.28.39.216 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[HUj2asap]
+viejasahu10 ansible_ssh_host=172.16.10.148 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[HUu2asap]
+vieuasahu10 ansible_ssh_host=172.16.10.149 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[HUo2asap]
+vieoasahu10 ansible_ssh_host=172.28.39.227 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[HUp2asap]
+viepasahu10 ansible_ssh_host=172.28.39.226 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[CZj4asap]
+viejasacz30 ansible_ssh_host=172.16.10.103 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CZu4asap]
+vieuasacz30 ansible_ssh_host=172.16.10.104 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CZo4asap]
+vieoasacz20 ansible_ssh_host=172.28.39.200 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CZp4asap]
+viepasacz20 ansible_ssh_host=172.28.39.199 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[SKj2asap]
+viejasask20 ansible_ssh_host=84.116.2.51 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[SKu2asap]
+vieuasask20 ansible_ssh_host=172.16.10.39 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[SKo2asap]
+vieoasask20 ansible_ssh_host=172.16.9.247 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[SKp2asap]
+viepasask20 ansible_ssh_host=172.16.9.199 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[CZj3asap]
+viejasacz20 ansible_ssh_host=84.116.2.158 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CZu2asap]
+vieuasacz20 ansible_ssh_host=84.116.2.159 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CZp2asap]
+viepasacz01 ansible_ssh_host=84.116.0.242 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[ROj2asap]
+viejasaro00 ansible_ssh_host=172.28.38.42 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[ROu2asap]
+vieuasaro00 ansible_ssh_host=172.28.38.62 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[ROp2asap]
+viepasaro00 ansible_ssh_host=172.28.35.32 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[CHj4asap]
+viejasach20 ansible_ssh_host=172.16.11.4 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CHu4asap]
+vieuasach20 ansible_ssh_host=172.16.11.5 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CHo4asap]
+vieoasach20 ansible_ssh_host=172.16.9.165 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CHp4asap]
+viepasach20 ansible_ssh_host=172.16.9.164 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[CHj3asap]
+viejasach30 ansible_ssh_host=172.16.10.248 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CHu3asap]
+vieuasach30 ansible_ssh_host=172.16.10.247 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CHo3asap]
+vieoasach30 ansible_ssh_host=172.28.39.248 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+[CHp3asap]
+viepasach30 ansible_ssh_host=172.28.39.247 ansible_ssh_user=asap Output_Dir=/u01/appl/asap
+
+
+[ATpdasap]
+viepasaat13 ansible_ssh_host=84.116.0.183 ansible_ssh_user=asapd Output_Dir=/u01/appl/asapd
+
+[ATudasap]
+vieuasaat10 ansible_ssh_host=84.116.2.35 ansible_ssh_user=asapd Output_Dir=/u01/appl/asapd
+
+[ATjdasap]
+viejasaat10 ansible_ssh_host=84.116.2.37 ansible_ssh_user=asapd Output_Dir=/u01/appl/asapd
+
+[web-DEV1asap]
+web-asapDEV1server ansible_ssh_host=84.116.2.151 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEd1asap]
+web-asapDEd1server ansible_ssh_host=84.116.2.152 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEj1asap]
+web-viejasade00 ansible_ssh_host=172.28.38.44 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEu1asap]
+web-vieuasade00 ansible_ssh_host=172.28.38.43 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEp3asap]
+web-viepasade00 ansible_ssh_host=172.28.35.31 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEj4asap]
+web-viejasade10 ansible_ssh_host=172.16.11.12 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEu4asap]
+web-vieuasade21 ansible_ssh_host=172.16.11.13 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-DEo4asap]
+web-viepasade21 ansible_ssh_host=172.16.9.172 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-NLj4asap]
+web-viejasanl20 ansible_ssh_host=172.16.2.236 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-NLu4asap]
+web-vieuasanl20 ansible_ssh_host=172.16.2.228 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-NLo4asap]
+web-vieoasanl20 ansible_ssh_host=172.16.4.204 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-NLp4asap]
+web-viepasanl20 ansible_ssh_host=172.16.4.196 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-PLj3asap]
+web-viejasapl10 ansible_ssh_host=172.16.10.135 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-PLu3asap]
+web-vieuasapl10 ansible_ssh_host=172.16.10.136 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-PLo3asap]
+web-vieoasapl10 ansible_ssh_host=172.28.39.215 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-PLp3asap]
+web-viepasapl10 ansible_ssh_host=172.28.39.216 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-HUj2asap]
+web-viejasahu10 ansible_ssh_host=172.16.10.148 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-HUu2asap]
+web-vieuasahu10 ansible_ssh_host=172.16.10.149 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-HUo2asap]
+web-vieoasahu10 ansible_ssh_host=172.28.39.227 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-HUp2asap]
+web-viepasahu10 ansible_ssh_host=172.28.39.226 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZj4asap]
+web-viejasacz30 ansible_ssh_host=172.16.10.103 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZu4asap]
+web-vieuasacz30 ansible_ssh_host=172.16.10.104 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZo4asap]
+web-vieoasacz20 ansible_ssh_host=172.28.39.200 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZp4asap]
+web-viepasacz20 ansible_ssh_host=172.28.39.199 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-SKj2asap]
+web-viejasask20 ansible_ssh_host=84.116.2.51 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-SKu2asap]
+web-vieuasask20 ansible_ssh_host=172.16.10.39 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-SKo2asap]
+web-vieoasask20 ansible_ssh_host=172.16.9.247 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-SKp2asap]
+web-viepasask20 ansible_ssh_host=172.16.9.199 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZj3asap]
+web-viejasacz20 ansible_ssh_host=84.116.2.158 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZu2asap]
+web-vieuasacz20 ansible_ssh_host=84.116.2.159 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CZp2asap]
+web-viepasacz01 ansible_ssh_host=84.116.0.242 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-ROj2asap]
+web-viejasaro00 ansible_ssh_host=172.28.38.42 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-ROu2asap]
+web-vieuasaro00 ansible_ssh_host=172.28.38.62 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-ROp2asap]
+web-viepasaro00 ansible_ssh_host=172.28.35.32 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHj4asap]
+web-viejasach20 ansible_ssh_host=172.16.11.4 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHu4asap]
+web-vieuasach20 ansible_ssh_host=172.16.11.5 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHo4asap]
+web-vieoasach20 ansible_ssh_host=172.16.9.165 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHp4asap]
+web-viepasach20 ansible_ssh_host=172.16.9.164 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHj3asap]
+web-viejasach30 ansible_ssh_host=172.16.10.248 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHu3asap]
+web-vieuasach30 ansible_ssh_host=172.16.10.247 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHo3asap]
+web-vieoasach30 ansible_ssh_host=172.28.39.248 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-CHp3asap]
+web-viepasach30 ansible_ssh_host=172.28.39.247 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-ATpdasap]
+web-viepasaat13 ansible_ssh_host=84.116.0.183 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-ATudasap]
+web-vieuasaat10 ansible_ssh_host=84.116.2.35 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[web-ATjdasap]
+web-viejasaat10 ansible_ssh_host=84.116.2.37 ansible_ssh_user=web Output_Dir=/u01/appl/web
+
+[TESTasap]
+sr1psbupe00 ansible_ssh_host=172.16.73.58 ansible_ssh_user=jenkins ansible_ssh_pass=DevOps!1234 ansible_host_key_checking=false ansible_python_interpreter=/usr/bin/python2.6 Output_Dir=/u01/appl/asap
+
+
