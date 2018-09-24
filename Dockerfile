@@ -1,4 +1,4 @@
-FROM python:2
+FROM python:2.7.15
 
 WORKDIR /usr/src/release-deployment-history
 #RUN yum -y install python-pip
