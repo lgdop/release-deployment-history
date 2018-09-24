@@ -10,7 +10,7 @@ RUN pip install dash \
                 Flask
 
 COPY app.py ./ \
-     asap_hosts ./ \
+     asap_hosts ./
 
 ADD static ./
 
