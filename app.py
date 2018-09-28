@@ -138,4 +138,4 @@ def set_display_children(selected_application, selected_environment):
         return dcc.Link(html.Button(id='submit-button',children='Submit'), href='/clarify_deployments')
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0',port=3005,debug=True)
+    app.run_server(host='0.0.0.0',debug=True)
