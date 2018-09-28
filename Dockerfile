@@ -14,4 +14,4 @@ RUN pip install dash \
 
 COPY . .
 
-CMD [ "gunicorn", "--bind", "0.0.0.0:3005", "wsgi:app" ]
+CMD [ "gunicorn", "--bind", "0.0.0.0:3005", "wsgi:server" ]
