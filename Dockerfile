@@ -9,11 +9,9 @@ RUN pip install dash \
                 dash_html_components \
                 datetime \
                 pymongo \
-                Flask
+                Flask \
+                gunicorn
 
-COPY app.py ./ \
-     asap_hosts ./
+COPY . .
 
-ADD static ./
-
-CMD [ "python", "./app.py" ]
+CMD [ "gunicorn", "--bind", "0.0.0.0:3005", "wsgi:app" ]
