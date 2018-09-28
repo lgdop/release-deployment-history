@@ -10,7 +10,8 @@ RUN pip install dash \
                 datetime \
                 pymongo \
                 Flask \
-                gunicorn
+                gunicorn \
+                dash-renderer
 
 COPY . .
 
