@@ -14,5 +14,6 @@ RUN pip install dash \
                 dash-renderer
 
 COPY . .
+EXPOSE 3005
 
 CMD [ "gunicorn", "--bind", "0.0.0.0:3005", "wsgi:server" ]
