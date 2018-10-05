@@ -17,4 +17,4 @@ RUN pip install dash \
 COPY . .
 EXPOSE 3005
 
-CMD [ "gunicorn", "--bind", "0.0.0.0:3005", "wsgi:server" ]
+CMD [ "python", "app.py" ]
