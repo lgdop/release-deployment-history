@@ -2,14 +2,11 @@ import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
-from flask import Flask, request, redirect
 #from pandas_datareader import data as web
 from datetime import datetime as dt
 import re
 import os
 import pymongo
-
-server = Flask(__name__)
 
 #table data style
 td_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#1A5276'}
@@ -151,9 +148,5 @@ def display_page(pathname):
     if pathname == '/rdh':
         return index_page
 
-@server.route('/rdh', methods=['GET'])
-def load_page():
-    return redirect('/rdh')
-
 if __name__ == '__main__':
-    server.run(debug=True)
+    app.run_server(host='0.0.0.0',debug=True)
