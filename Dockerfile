@@ -11,7 +11,8 @@ RUN pip install dash \
                 pymongo \
                 flask \
                 gunicorn \
-                dash-renderer
+                dash-renderer \
+                plotly
 
 COPY . .
 EXPOSE 3005
