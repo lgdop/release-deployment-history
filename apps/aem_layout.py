@@ -108,9 +108,9 @@ layout = html.Div([
     dash.dependencies.Output('SprintRelease-dropdown', 'options'),
     [dash.dependencies.Input('environments-dropdown', 'value')])
 def set_SprintRelease_options(selected_collection):
-        print selected_collection
-        connection = pymongo.MongoClient('mongodb://localhost:27017')
-        db=connection['aemdb']
+        print "Selected environment is : "+selected_collection
+        connection = pymongo.MongoClient('mongodb://mongodb')
+        db=connection['libertyglobal-online-aem']
         collectionList=db.collection_names()
         print collectionList
         sprintrelease_list=[]
