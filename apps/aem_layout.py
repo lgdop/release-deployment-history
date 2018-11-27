@@ -118,7 +118,7 @@ def set_SprintRelease_options(selected_collection):
         sprintrelease_list=[]
         for item in collectionList:
                 if selected_collection in item:
-                        sprintrelease_list.append(item.split(selected_collection+'_')[-1])
+                        sprintrelease_list.append(item.split(selected_collection+'-')[-1])
         print sprintrelease_list
         return [{'label': i, 'value': i} for i in sprintrelease_list]
 
