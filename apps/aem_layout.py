@@ -90,19 +90,21 @@ layout = html.Div([
     html.Br(),
     html.Br(),
     html.Div([
-        html.B(html.Div('Environment', className='app_name',style={'color':'#597E16','fontSize': 16})),
-        html.Div(dcc.Dropdown(id='environments-dropdown',
-                              options=[{'label': k, 'value': k} for k in aem_env_list]))
-        ],style={'width': '50%','display': 'inline-block','float': 'left'}),
-    #html.Br(),
-    html.Div([
-        html.B(html.Div('SprintRelease', className='app_name',style={'color':'#597E16','fontSize': 16})),
-        html.Div(dcc.Dropdown(id='SprintRelease-dropdown'))
-        ],style={'width': '50%','display': 'inline-block','float': 'right'}),
+        html.Div([
+            html.B(html.Div('Environment', className='app_name',style={'color':'#597E16','fontSize': 16})),
+            html.Div(dcc.Dropdown(id='environments-dropdown',
+                                  options=[{'label': k, 'value': k} for k in aem_env_list]))
+            ],style={'width': '50%','display': 'inline-block','float': 'left'}),
+        #html.Br(),
+        html.Div([
+            html.B(html.Div('SprintRelease', className='app_name',style={'color':'#597E16','fontSize': 16})),
+            html.Div(dcc.Dropdown(id='SprintRelease-dropdown'))
+            ],style={'width': '50%','display': 'inline-block','float': 'right'})
+        ],style={'width': '45%'}),
     html.Br(),
     html.Br(),
     html.Div(id='resultant_display')
-],style={'width': '45%'})
+])
 
 @app.callback(
     dash.dependencies.Output('SprintRelease-dropdown', 'options'),
@@ -131,5 +133,5 @@ def set_SprintRelease_options1(selected_collection,selected_sprintRelease):
     coll=db[selected_collection+'_'+selected_sprintRelease]
     records=coll.find({'job':'DEV'},{'version':1,'Release_Notes':1,'_id':0})
     records_count=coll.find({'job':'DEV'},{'version':1,'Release_Notes':1,'_id':0}).count()
-    print "TOTAL DEV RECORDS:"+str(records.count())
+    print "TOTAL DEV RECORDS:"+str(records_count)
     return generate_table(records,selected_collection+'-'+selected_sprintRelease)
