@@ -114,6 +114,7 @@ def set_SprintRelease_options(selected_collection):
         connection = pymongo.MongoClient('mongodb://mongodb')
         db=connection['libertyglobal-online-aem']
         collectionList=db.collection_names()
+        collectionList=filter(None,collectionList)
         print collectionList
         sprintrelease_list=[]
         for item in collectionList:
