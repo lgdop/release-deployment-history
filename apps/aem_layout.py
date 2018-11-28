@@ -131,7 +131,7 @@ def set_SprintRelease_options1(selected_collection,selected_sprintRelease):
     print selected_collection,selected_sprintRelease
     connection = pymongo.MongoClient('mongodb://mongodb')
     db=connection['libertyglobal-online-aem']
-    coll=db[selected_collection+'_'+selected_sprintRelease]
+    coll=db[selected_collection+'-'+selected_sprintRelease]
     records=coll.find({'job':'DEV'},{'version':1,'Release_Notes':1,'_id':0})
     records_count=coll.find({'job':'DEV'},{'version':1,'Release_Notes':1,'_id':0}).count()
     print "TOTAL DEV RECORDS:"+str(records_count)
