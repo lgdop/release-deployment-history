@@ -91,7 +91,7 @@ layout = html.Div([
     html.Br(),
     html.Div([
         html.Div([
-            html.B(html.Div('Environment', className='app_name',style={'color':'#597E16','fontSize': 16})),
+            html.B(html.Div('Affiliate', className='app_name',style={'color':'#597E16','fontSize': 16})),
             html.Div(dcc.Dropdown(id='environments-dropdown',
                                   options=[{'label': k, 'value': k} for k in aem_env_list]))
             ],style={'width': '50%','display': 'inline-block','float': 'left'}),
@@ -99,7 +99,7 @@ layout = html.Div([
         html.Div([
             html.B(html.Div('SprintRelease', className='app_name',style={'color':'#597E16','fontSize': 16})),
             html.Div(dcc.Dropdown(id='SprintRelease-dropdown'))
-            ],style={'width': '50%','display': 'inline-block','float': 'right'})
+            ],style={'width': '50%','display': 'inline-block','float': 'left'})
         ],style={'width': '45%'}),
     html.Br(),
     html.Br(),
