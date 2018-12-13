@@ -93,7 +93,7 @@ layout = html.Div([
     [dash.dependencies.Input('environments-dropdown', 'value')])
 def set_display_children(selected_environment):
 #Connecting to LGDOP mongoDB
-    connection = pymongo.MongoClient('mongodb://mongodb')
+    connection = pymongo.MongoClient("mongodb://"+os.environ['asap_user']+":"+os.environ['asap_pwd']+"@mongodb:27017/libertyglobal-oss-asap?ssl=false")
     db=connection['libertyglobal-oss-asap']
     coll=db['Environment']
     document_data=coll.find_one({'_id' : selected_environment }, { 'Old_version' : 1, '_id' : 0 })

@@ -18,7 +18,7 @@ th_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','
 def generate_table(deployed_data,collectionName):
     print collectionName
     simplified_list=[]
-    connection = pymongo.MongoClient('mongodb://mongodb')
+    connection = pymongo.MongoClient("mongodb://"+os.environ['aem_user']+":"+os.environ['aem_pwd']+"@mongodb:27017/libertyglobal-online-aem?ssl=false")
     db=connection['libertyglobal-online-aem']
     collec=db[collectionName]
     try:
@@ -111,7 +111,7 @@ layout = html.Div([
     [dash.dependencies.Input('environments-dropdown', 'value')])
 def set_SprintRelease_options(selected_collection):
         print "Selected environment is : "+selected_collection
-        connection = pymongo.MongoClient('mongodb://mongodb')
+        connection = pymongo.MongoClient("mongodb://"+os.environ['aem_user']+":"+os.environ['aem_pwd']+"@mongodb:27017/libertyglobal-online-aem?ssl=false")
         db=connection['libertyglobal-online-aem']
         collectionList=db.collection_names()
         collectionList=filter(None,collectionList)
@@ -129,7 +129,7 @@ def set_SprintRelease_options(selected_collection):
          dash.dependencies.Input('SprintRelease-dropdown', 'value')])
 def set_SprintRelease_options1(selected_collection,selected_sprintRelease):
     print selected_collection,selected_sprintRelease
-    connection = pymongo.MongoClient('mongodb://mongodb')
+    connection = pymongo.MongoClient("mongodb://"+os.environ['aem_user']+":"+os.environ['aem_pwd']+"@mongodb:27017/libertyglobal-online-aem?ssl=false")
     db=connection['libertyglobal-online-aem']
     coll=db[selected_collection+'-'+selected_sprintRelease]
     records=coll.find({'job':'DEV'},{'version':1,'Release_Notes':1,'_id':0})
