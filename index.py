@@ -3,12 +3,11 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 from app import app, server
-from apps import asap_layout,aem_layout
 from dotenv import load_dotenv
 import os
 load_dotenv(dotenv_path='/config/asap.env')
 load_dotenv(dotenv_path='/config/aem.env')
-
+from apps import asap_layout,aem_layout
 app.layout = html.Div([
     #Including local stylesheet
     html.Link(href='/static/table_style.css', rel='stylesheet'),
