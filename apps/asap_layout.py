@@ -171,7 +171,7 @@ crq_status_layout=html.Div([
 @app.callback(
     dash.dependencies.Output('display_table_2', 'children'),
     [dash.dependencies.Input('crq', 'value')])
-def set_env_status_table(crq):
+def set_crq_status_table(crq):
 #Connecting to LGDOP mongoDB
     #print selected_environment
     db=connection['libertyglobal-oss-asap']
@@ -368,8 +368,7 @@ def set_env_crq_compare_table(selected_environment1,crq):
     db=connection['libertyglobal-oss-asap']
     coll=db['Environment']
     document_data1=coll.find_one({'_id' : selected_environment1 }, { 'Old_version' : 1, '_id' : 0 })
-    db2=connection['ChangeRequests']
-    coll2=db2['ChangeRequests']
+    coll2=db['ChangeRequests']
     document_data2=coll2.find_one({'_id' : crq }, { 'Property_file' : 1, '_id' : 0 })
     print document_data1
     print document_data2
@@ -434,8 +433,6 @@ def set_env_crq_compare_table(selected_environment1,crq):
                             ])
                         ), 
                 ])
-
-#Below callback takes the 2 dropdown inputs and generates a table by taking details from mongoDB and displays the result on the page
 
 @app.callback(Output("display_next_layout", "children"), [Input("asap_tabs", "value")])
 def display_tab_content(tab):
