@@ -8,7 +8,6 @@ import re  # reg expression
 import os  # os related cat etc...
 import pymongo
 from app import app
-load_dotenv(dotenv_path='/config/aem.env')
 #table data style
 td_style={'padding-top':'10px', 'padding-bottom':'10px','padding-left': '10px','padding-right': '10px','color':'#1A5276'}
 #table heading style

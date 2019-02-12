@@ -8,7 +8,6 @@ from datetime import datetime as dt
 import re
 import os
 import pymongo
-load_dotenv(dotenv_path='/config/asap.env')
 
 #server = Flask(__name__)
 
