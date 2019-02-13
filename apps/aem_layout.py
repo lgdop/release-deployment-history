@@ -80,7 +80,7 @@ def generate_table(deployed_data,collectionName):
             'textAlign': 'left',
             })
 ])
-aem_env_list=["AEM56_CH","AEM56_NL","AEM61_IE","AEM61_PE","AEM62_CH","AEM62_DE"]
+aem_env_list=["AEM56_CH","AEM56_NL","AEM62_IE","AEM61_PE","AEM62_CH","AEM62_DE"]
 
 #Desiging layout of page
 layout = html.Div([
