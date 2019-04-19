@@ -122,7 +122,7 @@ def display_submit_button(Affiliate,start_date,end_date):
         if start_date<=end_date:
             return html.Div(html.Button(id='Submit',
                              n_clicks=0, children = dcc.Link('Submit',href='/release-history/release-history-result'),
-                             style={'padding-top':'5px','padding-bottom':'5px','color':'#008080','backgroundColor':'#A9A9A9','width':'85px','borderRadius':'4px'}),style={'padding-left':'510px'})
+                             style={'padding-top':'5px','padding-bottom':'5px','color':'#008080','backgroundColor':'#A9A9A9','width':'85px','borderRadius':'4px'}),style={'textAlign':'center'})
         else:
             return html.Div('End date should be greater than start date!!!',style={'padding-left': '425px','textAlign': 'left','color': '#DF0101','fontSize':25})
 
@@ -290,7 +290,7 @@ def searched_rm_details(rm_number,n_clicks,affiliate):
                         columns=[{"name": i, "id": i} for i in rm_df.columns],
                         data=rm_df.to_dict("rows"),
                         is_focused=True,
-                        style_cell={'textAlign': 'center','backgroundColor':'#F0FFF0','minWidth': '110px', 'maxWidth': '1000px'},
+                        style_cell={'textAlign': 'center','backgroundColor':'#FFFFFF','minWidth': '110px', 'maxWidth': '1000px'},
                        style_data={'whiteSpace': 'normal'},
                         #content_style='fit',
                         style_header={
