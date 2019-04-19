@@ -215,7 +215,7 @@ def display_selected_rm_details(rm_list,selected_row,env,affiliate):
     if len(selected_row)!=0:
         print rm_list[selected_row[0]][env]
         rm_data_list=[]
-        for each_env in ['JIT','UAT']:
+        for each_env in ['JIT','UAT','ORT','PROD']:
             rm_data_dict={}
             coll=db[affiliate.lower()+'-'+each_env]
             try:
@@ -263,7 +263,7 @@ def searched_rm_details(rm_number,n_clicks,affiliate):
     if n_clicks>0 and re.search(r'(RM-[0-9]{5,6})',rm_number):
         print rm_number
         rm_data_list=[]
-        for each_env in ['JIT','UAT']:
+        for each_env in ['JIT','UAT','ORT','PROD']:
             rm_data_dict={}
             coll=db[affiliate.lower()+'-'+each_env]
             try:

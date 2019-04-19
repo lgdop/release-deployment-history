@@ -44,8 +44,6 @@ asap_env_list=['DEV1', 'DEd1', 'DEj1', 'DEu1', 'DEp3', 'DEj4', 'DEu4', 'DEp4', '
 layout = html.Div([
     #Including local stylesheet
     html.Link(href='/static/table_style.css', rel='stylesheet'),
-    html.Br(),
-    html.Br(),
     html.Div([
         dcc.Tabs(
             id="asap_tabs",
