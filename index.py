@@ -59,6 +59,8 @@ def render_content(tab):
         return asap_layout.layout
     elif tab == "clarify_tab":
         return clarify_layout.layout
+    elif tab == "aem_tab":
+        return aem_layout.layout
     else:
         return
 
