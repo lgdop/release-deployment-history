@@ -13,7 +13,8 @@ RUN pip install dash \
                 gunicorn \
                 dash-renderer \
                 plotly \
-                python-dotenv
+                python-dotenv \
+		pandas
 COPY . .
 EXPOSE 3005
 
