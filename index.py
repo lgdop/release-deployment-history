@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 import os
 load_dotenv(dotenv_path='/config/asap.env')
 load_dotenv(dotenv_path='/config/aem.env')
-from apps import asap_layout,aem_layout
+load_dotenv(dotenv_path='/config/clarify.env')
+from apps import asap_layout,clarify_layout,aem_layout
 app.layout = html.Div([
     #Including local stylesheet
     html.Link(href='/static/table_style.css', rel='stylesheet'),
@@ -24,6 +25,7 @@ app.layout = html.Div([
        ),
     html.Br(),
     html.Br(),
+    dcc.Location(id='main_url', refresh=False),
     html.Br(),
     html.Div([
         dcc.Tabs(
@@ -55,11 +57,16 @@ app.layout = html.Div([
 def render_content(tab):
     if tab == "asap_tab":
         return asap_layout.layout
-    elif tab == "aem_tab":
-        return aem_layout.layout
+    elif tab == "clarify_tab":
+        return clarify_layout.layout
     else:
         return
 
+@app.callback(Output('main_url', 'pathname'),
+              [Input("tabs", "value")])
+def display_url(tab):
+    if tab != "clarify_tab":
+        return "/release-history/"
 
 if __name__ == '__main__':
     server.run(debug=True)
