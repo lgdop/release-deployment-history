@@ -85,6 +85,7 @@ aem_env_list=["AEM56_CH","AEM56_NL","AEM62_IE","AEM61_PE","AEM62_CH","AEM62_DE"]
 #Desiging layout of page
 layout = html.Div([
     #Including local stylesheet
+    html.Link(href='/static/cdc_layout_style.css', rel='stylesheet'),
     html.Link(href='/static/table_style.css', rel='stylesheet'),
     html.Br(),
     html.Br(),
@@ -135,3 +136,4 @@ def set_SprintRelease_options1(selected_collection,selected_sprintRelease):
     records_count=coll.find({'job':'DEV'},{'version':1,'Release_Notes':1,'_id':0}).count()
     print "TOTAL DEV RECORDS:"+str(records_count)
     return generate_table(records,selected_collection+'-'+selected_sprintRelease)
+

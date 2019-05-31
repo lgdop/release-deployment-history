@@ -43,23 +43,24 @@ asap_env_list=['DEV1', 'DEd1', 'DEj1', 'DEu1', 'DEp3', 'DEj4', 'DEu4', 'DEp4', '
 #Desiging layout of page
 layout = html.Div([
     #Including local stylesheet
+    html.Link(href='/static/cdc_layout_style.css', rel='stylesheet'),
     html.Link(href='/static/table_style.css', rel='stylesheet'),
     html.Div([
         dcc.Tabs(
             id="asap_tabs",
-            style={"height":"5",'textAlign': 'center','color': '#8B0000','cursor': 'pointer','align-items': 'center','justify-content': 'center','fontSize': 20},
+            style={"height":"5",'textAlign': 'center','color': '#008080','cursor': 'pointer','align-items': 'center','justify-content': 'center','fontSize': 20},
             #style=tabs_styles,
             children=[
-                dcc.Tab(label="Environment status", value="env_tab",selected_style={'color': '#00FFFF','backgroundColor': '#2F4F4F',"border": "#A52A2A"}),
-                dcc.Tab(label="Latest build", value="build_tab",selected_style={'color': '#00FFFF','backgroundColor': '#2F4F4F',"border": "#A52A2A"}),
-                dcc.Tab(label="Compare ENV-to-ENV", value="env_cmp_tab",selected_style={'color': '#00FFFF','backgroundColor': '#2F4F4F',"border": "#A52A2A"}),
-                dcc.Tab(label="Comapre ENV-to-Latest-Build", value="env_crq_tab",selected_style={'color': '#00FFFF','backgroundColor': '#2F4F4F',"border": "#A52A2A"}),
+                dcc.Tab(label="Environment status", value="env_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
+                dcc.Tab(label="Latest build", value="build_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
+                dcc.Tab(label="Compare ENV-to-ENV", value="env_cmp_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
+                dcc.Tab(label="Comapre ENV-to-Latest-Build", value="env_crq_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
                 ],
             value="env_tab",
             colors={
-                "border": "#000000",
-                "primary": "#DCDCDC",
-                "background": "#DCDCDC"
+                "border": "#FFFFFF",
+                "primary": "#F5F5DC",
+                "background": "#F5F5DC"
                 }
             #vertical="vertical",
             )]
@@ -442,3 +443,4 @@ def display_tab_content(tab):
         return compare_env_layout
     else:
         return compare_env_crq_layout
+

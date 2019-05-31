@@ -11,47 +11,58 @@ load_dotenv(dotenv_path='/config/clarify.env')
 from apps import asap_layout,clarify_layout,aem_layout
 app.layout = html.Div([
     #Including local stylesheet
+    html.Link(href='/static/cdc_layout_style.css', rel='stylesheet'),
     html.Link(href='/static/table_style.css', rel='stylesheet'),
-    html.H1(children='Release Deployment History',id ='release-deployment-history', style={'textAlign': 'center','color': '#008080','display': 'inline-block',}),
-    html.Img(
-        src='/img/liberty-global-logo.jpg',
+    html.Div([
+        html.Img(
+        src='/img/Accenture-logo-red.png',
         style={
-            'height' : '10%',
-            'width' : '10%',
-            'float' : 'right',
-            'display': 'inline-block',
-            'float': 'right'
-           },
+            'height' : '100%',
+            'width' : '12%',
+            'display':'inline-block',
+            'float':'left',
+            'padding-right':'20px'
+        }
        ),
-    html.Br(),
-    html.Br(),
+        html.Div([
+             html.H1(children='RELEASE DEPLOYMENT HISTORY',style={'textAlign': 'center','color': '#000000'})
+           ],style={'padding-left':'200px','display':'inline-block','float':'left'}),
+        html.Img(
+        src='/img/logo-client-liberty-color.jpg',
+        style={
+            'height' : '80%',
+            'width' : '11%',
+            'display':'inline-block',
+            'float':'right',
+            'padding-right':'20px'
+        }
+       )],className='head-conatiner'),
+    html.Div([
     dcc.Location(id='main_url', refresh=False),
-    html.Br(),
     html.Div([
         dcc.Tabs(
             id="tabs",
             #parent_className='custom-tabs',
             #className='custom-tabs-container',
             #20B2AA
-            style={"height":"20",'textAlign': 'center','color': '#008080','cursor': 'pointer','align-items': 'center','justify-content': 'center','fontSize': 20},
+            style={"height":"20",'textAlign': 'center','fontWeight':'bold','color': '#000000','cursor': 'pointer','align-items': 'center','justify-content': 'center','fontSize': 20},
             #style=tabs_styles,
             children=[
-                dcc.Tab(label="ASAP", value="asap_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
-                dcc.Tab(label="Clarify", value="clarify_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
-                dcc.Tab(label="AEM", value="aem_tab",selected_style={'color': '#CD5C5C','backgroundColor': '#66CDAA',"border": "#A52A2A"}),
+                dcc.Tab(label="ASAP", value="asap_tab",selected_style={'color': '#FFFFFF','fontWeight':'bold','backgroundColor': '#7F8C8D',"border": "#A52A2A"}),
+                dcc.Tab(label="CLARIFY", value="clarify_tab",selected_style={'color': '#FFFFFF','fontWeight':'bold','backgroundColor': '#7F8C8D',"border": "#A52A2A"}),
+                dcc.Tab(label="AEM", value="aem_tab",selected_style={'color': '#FFFFFF','fontWeight':'bold','backgroundColor': '#7F8C8D',"border": "#A52A2A"}),
                 ],
             value="asap_tab",
             colors={
                 "border": "#FFFFFF",
                 "primary": "#F5F5DC",
-                "background": "#F5F5DC"
+                "background": "#A6ACAF"
                 }
             #vertical="vertical",
             )]
             ),
-    html.Br(),
     html.Div(id="tab_content")
-    ])
+    ],className='main-container')])
 
 @app.callback(Output("tab_content", "children"), [Input("tabs", "value")])
 def render_content(tab):
@@ -72,3 +83,4 @@ def display_url(tab):
 
 if __name__ == '__main__':
     server.run(debug=True)
+

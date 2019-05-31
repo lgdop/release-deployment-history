@@ -16,6 +16,7 @@ connection = pymongo.MongoClient("mongodb://"+os.environ['clarify_user']+":"+os.
 db=connection['libertyglobal-bss-clarify']
 layout = html.Div([
     #Including local stylesheet
+    html.Link(href='/static/cdc_layout_style.css', rel='stylesheet'),
     html.Br(),
     html.Br(),
     dcc.Location(id='url', refresh=False),
@@ -44,8 +45,8 @@ initial_layout=html.Div([
                                                            min_date_allowed=dt(2018, 1, 1),
                                                            max_date_allowed=today_date,
                                                            initial_visible_month=today_date,
-														   date=str(today_date),
-                                                          
+                                                           date=str(today_date),
+
                                                        )),style={'padding-bottom':'10px','padding-left': '10px','padding-right': '40px'})
                     ]),
                 html.Tr([
@@ -94,7 +95,7 @@ result_layout=html.Div([
              style={'width':'120px','height':'30px','borderRadius':'4px','textAlign':'center'}
          ),
     style={'display':'inline-block','padding-left':'10px'}),],style={'textAlign':'center','display':'inline-block'}),
-   html.Div(html.Button('Search', id='search_button',n_clicks=0),style={'display':'inline-block','padding-left':'50px','height':'30px','borderRadius':'4px'}),
+   html.Div(html.Button('Search', id='search_button'),style={'display':'inline-block','padding-left':'50px','height':'30px','borderRadius':'4px'}),
    html.Br(),
    html.Br(),
    html.Br(),
@@ -108,7 +109,7 @@ result_layout=html.Div([
    html.Br(),
    html.Br()],style={'display':'inline-block','float':'right','padding-right':'300px','padding-left':'80px'}),
    html.Div(html.Button(id='back',
-                             n_clicks=0, children = dcc.Link('BACK',href='/release-history'),
+                            children = dcc.Link('BACK',href='/release-history'),
                              style={'padding-top':'5px','padding-bottom':'5px','color':'#008080','backgroundColor':'#A9A9A9','width':'85px','borderRadius':'4px'}),style={'padding-left':'600px'})
    ],style={'textAlign':'center'})
 
@@ -121,7 +122,7 @@ def display_submit_button(Affiliate,start_date,end_date):
     if Affiliate:
         if start_date<=end_date:
             return html.Div(html.Button(id='Submit',
-                             n_clicks=0, children = dcc.Link('Submit',href='/release-history/release-history-result'),
+                                children = dcc.Link('Submit',href='/release-history/release-history-result'),
                              style={'padding-top':'5px','padding-bottom':'5px','color':'#008080','backgroundColor':'#A9A9A9','width':'85px','borderRadius':'4px'}),style={'textAlign':'center'})
         else:
             return html.Div('End date should be greater than start date!!!',style={'padding-left': '425px','textAlign': 'left','color': '#DF0101','fontSize':25})
@@ -143,13 +144,16 @@ def store_start_date(Affiliate):
 
 @app.callback(Output('load_layout', 'children'),
               [Input('url', 'pathname')],
-              [State('affiliate_temp_store','children')])
-def display_page(pathname,affiliate):
+              [State('affiliate_temp_store','children'),State('start_date_temp_store','children'),State('end_date_temp_store','children')])
+def display_page(pathname,affiliate,start_date,end_date):
     if pathname == '/release-history' or pathname == '/release-history/':
         return initial_layout
     elif pathname=='/release-history/release-history-result':
         return html.Div([
                     html.Div('Affiliate : '+affiliate,style={'textAlign':'center','fontSize':16,'fontWeight':'bold'}),
+                    html.Br(),
+                    html.Div([html.Div('Start Date : '+str(start_date).split(' ')[0],style={'fontSize':16,'fontWeight':'bold','display':'inline-block','padding-right':'25px','padding-left':'30px'}),
+                    html.Div('End Date : '+str(end_date).split(' ')[0],style={'fontSize':16,'fontWeight':'bold','display':'inline-block','padding-left':'25px'})],style={'textAlign':'center'}),
                     html.Br(),
                     html.Br(),
                     result_layout
@@ -159,7 +163,7 @@ def display_page(pathname,affiliate):
     Output('rm_list','children'),
     [Input('env_checklist','value')],
     [State('start_date_temp_store','children'),State('end_date_temp_store','children'),State('affiliate_temp_store','children')])
-def display_uat_rm_list(env,start_date,end_date,affiliate):
+def display_env_rm_list(env,start_date,end_date,affiliate):
     #return 'You selected "{}" and start date "{}" and end date "{}"'.format(env_list,start_date,end_date)
     env_rm_final_dict={}
     if env != '':
@@ -173,7 +177,7 @@ def display_uat_rm_list(env,start_date,end_date,affiliate):
             release_date = dt.strptime(str(each_doc['RM_ID'][each_rm_keys]['deployed_time']), '%Y_%m_%d_%H_%M_%S')
             start_date=dt.strptime(str(start_date).split()[0], '%Y-%m-%d')
             end_date=dt.strptime(str(end_date).split()[0], '%Y-%m-%d')
-            if release_date >= start_date and release_date<=end_date:
+            if release_date >= start_date and release_date<=end_date and each_doc['RM_ID'][each_rm_keys]['release_version']!= "NI":
               date_RM_dict[release_date]= each_rm_keys
         RM_list_sorted_date = list(set([rm_dict for date,rm_dict in sorted(date_RM_dict.items(), key=lambda p: p[0], reverse=True)]))
         env_rm_final_dict[env] = RM_list_sorted_date
@@ -196,7 +200,7 @@ def display_uat_rm_list(env,start_date,end_date,affiliate):
                        n_fixed_columns=1,
                        n_fixed_rows=1,
                        style_data={'whiteSpace': 'normal'},
-                        #content_style='fit',
+                        content_style='fit',
                         style_header={
                         'backgroundColor': '#3CB371',
                         'fontWeight': 'bold',
@@ -214,25 +218,53 @@ def display_uat_rm_list(env,start_date,end_date,affiliate):
 def display_selected_rm_details(rm_list,selected_row,env,affiliate):
     if len(selected_row)!=0:
         print rm_list[selected_row[0]][env]
+        rm_number=rm_list[selected_row[0]][env]
         rm_data_list=[]
-        for each_env in ['JIT','UAT','ORT','PROD']:
-            rm_data_dict={}
+        rm_env_dict={'PROD':{"Version":'NI',"deployed_time":"NA"},'ORT':{"Version":'NI',"deployed_time":"NA"},'UAT':{"Version":'NI',"deployed_time":"NA"},'JIT':{"Version":'NI',"deployed_time":"NA"}}
+        env_list=['PROD','ORT','UAT','JIT']
+        rm_data_dict={}
+        for each_env in env_list:
             coll=db[affiliate.lower()+'-'+each_env]
+            print affiliate.lower()+'-'+each_env
             try:
-                required_details=coll.find({'RM_ID.'+rm_list[selected_row[0]][env]: { '$exists': True }}, {'RM_ID.'+rm_list[selected_row[0]][env]+'.release_version': 1,'RM_ID.'+rm_list[selected_row[0]][env]+'.deployed_time': 1, '_id': 0})
+                required_details=coll.find({'RM_ID.'+rm_number: { '$exists': True }}, {'RM_ID.'+rm_number+'.release_version': 1,'RM_ID.'+rm_number+'.deployed_time': 1, '_id': 0})
                 data=required_details.next()
-                print data
-                rm_data_dict['App Environment']=each_env
-                rm_data_dict['Release-Version']=data['RM_ID'][rm_list[selected_row[0]][env]]['release_version']
-                rm_data_dict['Deployed-Date']=dt.strptime(str(data['RM_ID'][rm_list[selected_row[0]][env]]['deployed_time']), '%Y_%m_%d_%H_%M_%S').ctime()
-                print rm_data_dict
+                rm_env_dict[each_env]["Version"]=data['RM_ID'][rm_number]['release_version']
+                rm_env_dict[each_env]["deployed_time"] = dt.strptime(str(data['RM_ID'][rm_number]['deployed_time']), '%Y_%m_%d_%H_%M_%S').ctime()
             except Exception as e:
                 print e
-                rm_data_dict['App Environment']=each_env
-                rm_data_dict['Release-Version']='Not Deployed'
-                rm_data_dict['Deployed-Date']='Not Deployed'
-                print rm_data_dict
+        print rm_env_dict
+        for i in range(0,len(env_list)-1):
+            if rm_env_dict[env_list[i]]["Version"] != "NI":
+                print env_list[i]
+                print rm_env_dict[env_list[i]]["Version"]
+                for j in range(i+1,len(env_list)):
+                    print "inner loop"
+                    print env_list[j]
+                    print rm_env_dict[env_list[j]]["Version"]
+                    if env_list[i]=="UAT":
+                        print "entered UAT condition"
+                        if ((rm_env_dict[env_list[j]]["Version"]=="NI") or (rm_env_dict[env_list[j]]["Version"] < rm_env_dict[env_list[i]]["Version"])):
+                            rm_env_dict[env_list[j]]["Version"]="Skipped"
+                    else:
+                        if rm_env_dict[env_list[j]]["Version"] == rm_env_dict[env_list[i]]["Version"]:
+                            print "version is same"
+                        else:
+                            rm_env_dict[env_list[j]]["Version"]="Skipped"
+                            print rm_env_dict[env_list[j]]["Version"]
+                break
+        print "final env dict"
+        print rm_env_dict
+        print rm_env_dict.keys()
+        for each_env in ['JIT','UAT','ORT','PROD']:
+            print each_env
+            rm_data_dict={}
+            rm_data_dict['App Environment']=each_env
+            rm_data_dict['Release-Version']=rm_env_dict[each_env]["Version"]
+            rm_data_dict['Deployed-Date']=rm_env_dict[each_env]["deployed_time"]
             rm_data_list.append(rm_data_dict)
+            print rm_data_dict
+            print rm_data_list
         rm_df=pd.DataFrame.from_dict(rm_data_list)
         return html.Div([
             html.Div(rm_list[selected_row[0]][env],style={'fontSize':15}),
@@ -260,29 +292,57 @@ def display_selected_rm_details(rm_list,selected_row,env,affiliate):
     [Input('rm_number','value'),Input('search_button', 'n_clicks')],
     [State('affiliate_temp_store','children')])
 def searched_rm_details(rm_number,n_clicks,affiliate):
-    if n_clicks>0 and re.search(r'(RM-[0-9]{5,6})',rm_number):
+    if re.search(r'(RM-[0-9]{5,6})',rm_number):
         print rm_number
         rm_data_list=[]
-        for each_env in ['JIT','UAT','ORT','PROD']:
-            rm_data_dict={}
+        rm_env_dict={'PROD':{"Version":'NI',"deployed_time":"NA"},'ORT':{"Version":'NI',"deployed_time":"NA"},'UAT':{"Version":'NI',"deployed_time":"NA"},'JIT':{"Version":'NI',"deployed_time":"NA"}}
+        env_list=['PROD','ORT','UAT','JIT']
+        rm_data_dict={}
+        for each_env in env_list:
             coll=db[affiliate.lower()+'-'+each_env]
+            print affiliate.lower()+'-'+each_env
             try:
                 required_details=coll.find({'RM_ID.'+rm_number: { '$exists': True }}, {'RM_ID.'+rm_number+'.release_version': 1,'RM_ID.'+rm_number+'.deployed_time': 1, '_id': 0})
                 data=required_details.next()
-                print data
-                rm_data_dict['App Environment']=each_env
-                rm_data_dict['Release-Version']=data['RM_ID'][rm_number]['release_version']
-                rm_data_dict['Deployed-Date']=dt.strptime(str(data['RM_ID'][rm_number]['deployed_time']), '%Y_%m_%d_%H_%M_%S').ctime()
-                print rm_data_dict
+                rm_env_dict[each_env]["Version"]=data['RM_ID'][rm_number]['release_version']
+                rm_env_dict[each_env]["deployed_time"] = dt.strptime(str(data['RM_ID'][rm_number]['deployed_time']), '%Y_%m_%d_%H_%M_%S').ctime()
             except Exception as e:
                 print e
-                rm_data_dict['App Environment']=each_env
-                rm_data_dict['Release-Version']='Not Deployed'
-                rm_data_dict['Deployed-Date']='Not Deployed'
-                print rm_data_dict
+        print rm_env_dict
+        for i in range(0,len(env_list)-1):
+            if rm_env_dict[env_list[i]]["Version"] != "NI":
+                print env_list[i]
+                print rm_env_dict[env_list[i]]["Version"]
+                for j in range(i+1,len(env_list)):
+                    print "inner loop"
+                    print env_list[j]
+                    print rm_env_dict[env_list[j]]["Version"]
+                    if env_list[i]=="UAT":
+                        print "entered UAT condition"
+                        if ((rm_env_dict[env_list[j]]["Version"]=="NI") or (rm_env_dict[env_list[j]]["Version"] < rm_env_dict[env_list[i]]["Version"])):
+                            rm_env_dict[env_list[j]]["Version"]="Skipped"
+                    else:
+                        if rm_env_dict[env_list[j]]["Version"] == rm_env_dict[env_list[i]]["Version"]:
+                            print "version is same"
+                        else:
+                            rm_env_dict[env_list[j]]["Version"]="Skipped"
+                            print rm_env_dict[env_list[j]]["Version"]
+                break
+        print "final env dict"
+        print rm_env_dict
+        print rm_env_dict.keys()
+        for each_env in ['JIT','UAT','ORT','PROD']:
+            print each_env
+            rm_data_dict={}
+            rm_data_dict['App Environment']=each_env
+            rm_data_dict['Release-Version']=rm_env_dict[each_env]["Version"]
+            rm_data_dict['Deployed-Date']=rm_env_dict[each_env]["deployed_time"]
             rm_data_list.append(rm_data_dict)
+            print rm_data_dict
+            print rm_data_list
         rm_df=pd.DataFrame.from_dict(rm_data_list)
         return html.Div([
+            html.Br(),
             html.Div(rm_number,style={'fontSize':15}),
             html.Br(),
             dash_table.DataTable(
@@ -300,6 +360,5 @@ def searched_rm_details(rm_number,n_clicks,affiliate):
                         'fontSize':20
                         })
             ])
-
 
 
